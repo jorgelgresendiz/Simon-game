@@ -2,6 +2,7 @@ body {
     font-family: sans-serif;
     justify-content: center;
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.89);
 }
 header {
     font-size: 20px;
@@ -30,28 +31,49 @@ header {
 
 #box1.box {
     border-radius: 100% 0% 0% 0%;
-    background-color: green;
+    background-color: rgb(106, 199, 106);
+}
+
+#box1.box:hover{
+    background-color: green; 
+
 }
 
 #box2.box {
     border-radius: 0% 100% 0% 0%;
+    background-color: rgb(184, 58, 58);
+}
+
+#box2.box:hover{
     background-color: red;
 }
 
 #box3.box{
     border-radius: 0% 0% 0% 100%;
+    background-color: rgba(247, 247, 0, 0.6);
+}
+
+#box3.box:hover{
     background-color: yellow;
-
-
 }
 
 #box4.box{
     border-radius: 0% 0% 100% 0%;
-    background-color: blue;
-
-
+    background-color: rgb(79, 79, 209);
 }
 
+#box4.box:hover{
+    background-color: blue;
+}
+
+button{
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover{
+    border-color: blue;
+}
 
 
 
