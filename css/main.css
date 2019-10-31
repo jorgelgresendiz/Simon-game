@@ -1,0 +1,60 @@
+body {
+    font-family: sans-serif;
+    justify-content: center;
+    text-align: center;
+}
+header {
+    font-size: 20px;
+    color: black;
+    text-align: center;
+    margin: auto;
+    font-family: sans-serif;
+
+}
+#firstContainer {
+    height: 500px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.box{
+    height: 200px;
+    width: 200px;
+    border: 2px solid black;
+    float: left;
+    cursor: pointer;
+}
+
+#box1.box {
+    border-radius: 100% 0% 0% 0%;
+    background-color: green;
+}
+
+#box2.box {
+    border-radius: 0% 100% 0% 0%;
+    background-color: red;
+}
+
+#box3.box{
+    border-radius: 0% 0% 0% 100%;
+    background-color: yellow;
+
+
+}
+
+#box4.box{
+    border-radius: 0% 0% 100% 0%;
+    background-color: blue;
+
+
+}
+
+
+
+
+
+
+ 
