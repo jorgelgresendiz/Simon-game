@@ -24,7 +24,7 @@ header {
 .box{
     height: 200px;
     width: 200px;
-    border: 2px solid black;
+    border: .5px solid black;
     float: left;
     cursor: pointer;
 }
