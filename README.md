@@ -4,12 +4,15 @@ Simon is a fun interactive game that is suitable for all ages and also helps tra
 
 ## Motivators:
 This game was built to practice my ongoing coding skills as well as for fun. Comments, criticism, and questions are encouraged as I am trying to grow and developer/engineer.
+___________________________________________________
 
 ## Installation:
 Add later
 
 ## Built with:
 HTML, CSS, Javascript, and jQuery.
+
+___________________________________________________
 
 ## User story:
 As a user:
@@ -23,19 +26,24 @@ As a user:
 7. Finally, if I fail at any level, I want a message to be displayed to me that tells me I lost,and forces me to start from level 1. 
 8. Alternatively, I would like to be congratulated if I successfully completed the whole game. 
 
-
+___________________________________________________
 
 ![Beginning-of-Game](https://i.imgur.com/LHcM4wU.png)
 
 * At the beginning the game will display a start button and the level number (1).
 
+___________________________________________________
+
 ![Next-level](https://i.imgur.com/fYIgyY5.png)
 
 * The game will display the current level and the option to restart the game. 
 
-![Next-level](https://i.imgur.com/xT72sEn.png)
+___________________________________________________
 
-![Next-level](https://i.imgur.com/EjPyuMl.png)
+![Next-level](https://i.imgur.com/3mM21FX.png)
+
+
+![Next-level](https://i.imgur.com/G6u0jvo.png)
 
 * Game will display a combination of colored buttons with their respective sounds at the start of each level.
 
@@ -45,14 +53,19 @@ As a user:
 
 * Each level will increase the number of colors and sounds to repeat/remember.
 
+___________________________________________________
+
 ![Level-lost](https://i.imgur.com/cg8p9oq.png)
 
 * If the player loses a level, the game displays the level lost at as well as the option to restart.
+
+___________________________________________________
 
 ![Game-complete](https://i.imgur.com/rUWo3z3.png)
 
 * If the player wins, the game displays a winning message and the option to restart the game.
 
+___________________________________________________
 
 ## Author:
 Jorge Galvan
