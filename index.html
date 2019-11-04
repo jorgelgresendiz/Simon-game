@@ -10,7 +10,7 @@
 <body>
     <header>SIMON GAME</header>
     <div id="firstContainer">
-        <div class="circle" id="largeCircle">
+        <div class="circle" id="boxes">
             <div class="box" id="box1"></div>
             <div class="box" id="box2"></div>
             <div class="box" id="box3"></div>
@@ -18,8 +18,9 @@
         </div>
     </div>
     <div id="secondContainer">
-        <div id="displayMessage">You completed 2 out of 20 levels!<br></div>
-        <button id="start">Restart!</button>
+        <div id="levels"></div>
+        <div id="displayMessage"></div>
+        <button id="start">Start</button>
     </div>
     <script defer src="js/main.js"></script>
     <audio src="audio/Box1.wav" id="soundBox1"></audio>
