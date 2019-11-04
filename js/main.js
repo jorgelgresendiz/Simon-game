@@ -1,11 +1,11 @@
 //constants
-let win;
-let sound;
+const numLevels = 20;
+var level = 0;
 
 //state variables
 
 let originalTable = [];
-var playerTable = [];
+let playerTable = [];
 
 //cached elements
 
@@ -24,16 +24,17 @@ const levels = document.getElementById("levels");
 //event listeners for e/ color 
 
 box1.addEventListener('click', (event) => {
-    console.log("working")
+
 })
+
+
 box2.addEventListener('click', (event) => {
-    console.log("working")
 })
+
 box3.addEventListener('click', (event) => {
-    console.log("working")
 })
+
 box4.addEventListener('click', (event) => {
-    console.log("working")
 })
 
 //add evt listener to btn and run cb function to trigger beginning of game
@@ -44,18 +45,51 @@ startBtn.addEventListener('click', startGame);
 function startGame(){
     originalTable = [];
     playerTable = [];
-    levels.innerHTML = "Level 1";
-//create a random number between 1 and 4 and push into array original table
-    for (let i = 0; i < 20; i++){
-        originalTable.push(Math.ceil(Math.random() * 4));
-    }
-    console.log(originalTable);
+    levels.innerHTML = "Level 1, good luck!";
+//runs simonTurn function after 1 sec    
+    setInterval(simonTurn, 1000);
 }
  
+//random number generated in a function and pushed into array
+function randomNumber(){
+    originalTable.push(Math.ceil(Math.random() * 4));
+}
+
+//simon function will display the current level
 function simonTurn(){
-//match the series of random numbers generated and play their corresponding song.
+    brightenButton();
 
 };
 
+function boxOne(){
+    let audio = document.getElementById("soundBox1");
+    Audio.play();
+};
 
+function boxTwo(){
+    let audio = document.getElementById("soundBox1");
+    Audio.play();
+};
+
+function boxThree(){
+    let audio = document.getElementById("soundBox1");
+    Audio.play();
+};
+
+function boxFour(){
+    let audio = document.getElementById("soundBox1");
+    Audio.play();
+};
+
+function checkWin(){
+
+}
+
+//function changes the preset opaque colors to bright colors
+function brightenButton(){
+    box1.style.backgroundColor("green");
+    box2.style.backgroundColor("red");
+    box3.style.backgroundColor("yellow");
+    box4.style.backgroundColor("blue");
+};
 
