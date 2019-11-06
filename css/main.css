@@ -1,11 +1,12 @@
 body {
     font-family: sans-serif;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.89);
+    background-color: rgb(255, 214, 139);
 }
 header {
+    background-color: orange;
     font-size: 20px;
-    color: black;
+    color: white;
     text-align: center;
     margin: auto;
     font-family: sans-serif;
