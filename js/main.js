@@ -66,18 +66,40 @@ function startGame(){
 
 // function changes the preset opaque colors to bright colors when found in gametable array
 function brightenButton() {
-    gameTable.forEach(i => {
-        if (i === 1) {
-             box1.style.backgroundColor = "green";
-         } if (i === 2) {
-            box2.style.backgroundColor = "red";
-         } if (i === 3) {
-             box3.style.backgroundColor = "yellow";
-        } if (i === 4) {
-             box4.style.backgroundColor = "blue";
-         }
-    })
+    setTimeout(function() {
+        gameTable.forEach(i => {
+            if (i === 1) {
+                box1.style.backgroundColor = "green";
+            } if (i === 2) {
+                box2.style.backgroundColor = "red";
+            } if (i === 3) {
+                box3.style.backgroundColor = "yellow";
+            } if (i === 4) {
+                box4.style.backgroundColor = "blue";
+            }
+        })
+    }, 1000);
+    dimButton();
 };
+
+
+function dimButton(){
+    setTimeout(function() {
+        gameTable.forEach(i => {
+            if (i === 1) {
+                box1.style.backgroundColor = "rgb(106, 199, 106)";
+            } if (i === 2) {
+                box2.style.backgroundColor = "rgb(184, 58, 58)";
+            } if (i === 3) {
+                box3.style.backgroundColor = "rgba(247, 247, 0, 0.4)";
+            } if (i === 4) {
+                box4.style.backgroundColor = "rgb(110, 110, 212)";
+            }
+        })
+    }, 2000);
+}
+
+
 
 
 //simon function
