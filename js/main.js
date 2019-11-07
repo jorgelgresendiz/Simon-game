@@ -1,5 +1,8 @@
 //constants
-var level = 0;
+let level;
+let playerTurn;
+let gameTurn;
+let turnOffLight;
 
 //state variables
 var gameTable = [];
@@ -17,6 +20,8 @@ const levels = document.getElementById("levels");
 
 
 //eventlisteners
+
+
 box1.addEventListener('click', (event) => {
     playerTable.push(event.target.id);
     //push clicking to user array
@@ -46,11 +51,11 @@ restartBtn.addEventListener('click', restartGame);
 
 //functions
 
-//create a random number between 1 and 4 and push into array original table
+//create an array of 20 random numbers and store in game table
 function randomNumber(){
-    var randomNumber = (Math.ceil(Math.random() * 4));
-    gameTable.push(randomNumber);
-    //immediately brightens button after respective random number found
+    for (let i = 0; i < 20; i++){
+        gameTable.push(Math.ceil(Math.random() * 4));
+    }
     brightenButton();
 };
 
@@ -58,11 +63,17 @@ function randomNumber(){
 function startGame(){
     randomNumber();
     playerTable = [];
+    level = 1;
     levels.innerHTML = "Level 1";    
-    setInterval(simonTurn, 1000);
+    //will turn off lights using clearInterval
+    turnOffLight = setInterval(simonTurn, 1000);
     console.log(gameTable);
 };
 
+//simon function
+function simonTurn(){
+
+};
 
 // function changes the preset opaque colors to bright colors when found in gametable array
 function brightenButton() {
@@ -79,10 +90,14 @@ function brightenButton() {
                 box3.style.borderColor = "white";
             } if (i === 4) {
                 box4.style.backgroundColor = "blue";
-                box4.style.borderColor = "white";
+                box4.style.borderColor = "white";  
             }
-        })
-    }, 1000);    
+            dimDown();
+        }) 
+    },50);
+} 
+
+function dimDown(){
     setTimeout(function() {
         gameTable.forEach(i => {
             if (i === 1) {
@@ -98,38 +113,46 @@ function brightenButton() {
                 box4.style.backgroundColor = "rgb(110, 110, 212)";
                 box4.style.borderColor = "black";
             }
-        })
-    }, 2000);    
+        }) 
+    }, 950); 
 };
 
-
-
-//simon function
-function simonTurn(){
-
-};
+function choosePattern(){
+    
+}
 
 
 function restartGame(){
     randomTable = [];
     originalTable = [];
 };
+ 
 
 
+function checkWin(){
+    gameTable.forEach(function(){
+        if (JSON.stringify(originalTable) === JSON.stringify(playerTable)){
+            document.getElementById("display").innerText = "Congratulations, you made it to the next level!";
+        } else {
+            document.getElementById("display").innerText = "Sorry, try again!";
+        }
+    });
+}
 
 
-// function checkWin(){
-//     gameTable.forEach(function(i){
+function boxOne(){
 
-//     if (JSON.stringify(originalTable) === JSON.stringify(playerTable)){
-//         document.getElementById("display").innerText = "Congratulations, you made it to the next level!";
-//     } else {
-//         document.getElementById("display").innerText = "Sorry, try again!";
-//     }
-// });
+};
 
+function boxTwo(){
 
+};
 
+function boxThree(){
 
+};
 
+function boxFour(){
+
+};
 
