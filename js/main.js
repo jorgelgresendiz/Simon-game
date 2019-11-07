@@ -70,35 +70,37 @@ function brightenButton() {
         gameTable.forEach(i => {
             if (i === 1) {
                 box1.style.backgroundColor = "green";
+                box1.style.borderColor = "white";
             } if (i === 2) {
                 box2.style.backgroundColor = "red";
+                box2.style.borderColor = "white";
             } if (i === 3) {
                 box3.style.backgroundColor = "yellow";
+                box3.style.borderColor = "white";
             } if (i === 4) {
                 box4.style.backgroundColor = "blue";
+                box4.style.borderColor = "white";
             }
         })
-    }, 1000);
-    dimButton();
-};
-
-
-function dimButton(){
+    }, 1000);    
     setTimeout(function() {
         gameTable.forEach(i => {
             if (i === 1) {
                 box1.style.backgroundColor = "rgb(106, 199, 106)";
+                box1.style.borderColor = "black";
             } if (i === 2) {
                 box2.style.backgroundColor = "rgb(184, 58, 58)";
+                box2.style.borderColor = "black";
             } if (i === 3) {
                 box3.style.backgroundColor = "rgba(247, 247, 0, 0.4)";
+                box3.style.borderColor = "black";
             } if (i === 4) {
                 box4.style.backgroundColor = "rgb(110, 110, 212)";
+                box4.style.borderColor = "black";
             }
         })
-    }, 2000);
-}
-
+    }, 2000);    
+};
 
 
 
