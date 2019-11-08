@@ -1,6 +1,6 @@
 //constants
 
-//to stop player from pushing buttons
+//dictates when player can play
 let on = false;
 
 //state variables
@@ -27,27 +27,64 @@ const box4  = document.getElementById("box4");
 
 
 //eventlisteners
-
-
 box1.addEventListener('click', (event) => {
-    playerTable.push(1);
-    //push clicking to user array
-    console.log(playerTable);
+    //player can only click if program is on...
+    if (on){
+        //function will check if current game table and player array are equal
+        // compare();
+        //change color of button clicked and push to player array
+        box1.style.backgroundColor = "green";
+        playerTable.push(1);
+        console.log(playerTable);
+    //whe player has not won (truthy), dim the button 500ms after it is pressed
+    if (!win) {
+            setTimeout(() => {
+                dimButton();
+            }, 500);
+        }
+    }
 })
 
 box2.addEventListener('click', (event) => {
-    playerTable.push(2);
-    console.log(playerTable);
+    if (on) {
+        playerTable.push(2);
+        // compare();
+        box2.style.backgroundColor = "red";
+        console.log(playerTable);
+    if (!win) {
+        setTimeout(() => {
+        dimButton();
+            }, 500);
+        }
+    }
 })
 
 box3.addEventListener('click', (event) => {
-    playerTable.push(3);
-    console.log(playerTable);
+    if (on) {
+        // compare();
+        box3.style.backgroundColor = "yellow";
+        playerTable.push(3);
+        console.log(playerTable);
+    if (!win) {
+        setTimeout(() => {
+        dimButton();
+            }, 500);
+        }
+    }
 })
 
 box4.addEventListener('click', (event) => {
-    playerTable.push(4);
-    console.log(playerTable);
+    if (on) {
+        // compare();
+        box4.style.backgroundColor = "blue";
+        playerTable.push(4);
+        console.log(playerTable);
+    // if (!win) {
+    //     setTimeout(() => {
+    //     dimButton();
+    //         }, 500);
+    //     }
+    }
 })
 
 //add evt listener to start btn and run cb function to trigger beginning of game
@@ -71,6 +108,7 @@ function startGame(){
     win = false;
     compTurn = true;
     level = 1;
+    //at beginning of game there are 0 buttons lit up
     lit = 0;
     //resetting all arrays to blank
     playerTable = [];
@@ -81,7 +119,7 @@ function startGame(){
     randomNumber();
     simonTurn(); 
     //calls simonTurn over and over every second and turns on buttons 
-    interval = 0;
+    // interval = 0;
     interval = setInterval(simonTurn, 900);
     console.log(gameTable);
 };
@@ -110,48 +148,16 @@ function simonTurn(){
              if (gameTable[lit] == 4) 
                 box4.style.backgroundColor = "blue";
             lit++;
-            // brightenButton();
         }, 100);
     }
 }
 
-    
-//turn corresponding piece on
-//wait for user input
-//compare
-//if correct generate new number
-//turn corresponding piece on
-//wait for user input
-//compare ...
-
-
-
-function playerTurn(){
-/// here 
-}
-
-// function changes the preset opaque colors to bright colors when found in gametable array
-function brightenButton() { // 
-        gameTable.forEach(i => {
-            if (i === 1) {
-                box1.style.backgroundColor = "green";
-            } if (i === 2) {
-                box2.style.backgroundColor = "red";
-            } if (i === 3) {
-                box3.style.backgroundColor = "yellow";
-            } if (i === 4) {
-                box4.style.backgroundColor = "blue";
-            }
-        })
-    dimButton();
-};
-
+//resets lit up buttons back to their normal state
 function dimButton(){
     box1.style.backgroundColor = "rgb(106, 199, 106)";
     box2.style.backgroundColor = "rgb(184, 58, 58)";
     box3.style.backgroundColor = "rgba(247, 247, 0, 0.4)";
     box4.style.backgroundColor = "rgb(110, 110, 212)";
-
 }
 
 
@@ -161,11 +167,11 @@ function restartGame(){
 };
  
 
-// function checkWin(){
-//     if (playerTable(i) === gameTable(i){
-//         alert("Great guess");
-//         levels.innerHTML = "Level" + $(`level`);    
-//     } else {
-//         alert("Try again");
-//     }
-// };
+function compare(){
+    if (playerTable(i) === gameTable(i)) {
+        alert("Great guess");
+        levels.innerHTML = "Level" + $(`level`);    
+    } else {
+        alert("Try again");
+    }
+};
