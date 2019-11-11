@@ -1,7 +1,7 @@
 //constants
 
-//dictates when player can play
-let on = false;
+//to stop player from pushing buttons
+var on = true;
 
 //state variables
 
@@ -11,7 +11,7 @@ let correct;
 let win;
 let compTurn;
 let level;
-
+let interval;
 
 var gameTable = [];
 var playerTable = [];
@@ -19,89 +19,85 @@ var playerTable = [];
 //cached elements
 const levels = document.getElementById("levels");
 const startBtn = document.getElementById("start");
-const restartBtn = document.getElementById("restart");
+
 const box1  = document.getElementById("box1");
 const box2  = document.getElementById("box2");
 const box3  = document.getElementById("box3");
 const box4  = document.getElementById("box4");
 
-
 //eventlisteners
 box1.addEventListener('click', (event) => {
-    //player can only click if program is on...
-    if (on){
-        //function will check if current game table and player array are equal
-        // compare();
-        //change color of button clicked and push to player array
-        box1.style.backgroundColor = "green";
-        playerTable.push(1);
-        console.log(playerTable);
-    //whe player has not won (truthy), dim the button 500ms after it is pressed
+//player can only click if program is on...
+if (on){
+    //change color of button clicked and push to player array
+    box1.style.backgroundColor = "green";
+    playerTable.push(1);
+    console.log(playerTable);
+    //function will check if current game table and player array are equal
+    compare(); 
+//whe player has not won (truthy), dim the button 500ms after it is pressed
     if (!win) {
             setTimeout(() => {
                 dimButton();
-            }, 500);
+            }, 300);
         }
+        console.log(win);
     }
-})
+});
 
 box2.addEventListener('click', (event) => {
     if (on) {
         playerTable.push(2);
-        // compare();
+        compare();
         box2.style.backgroundColor = "red";
         console.log(playerTable);
-    if (!win) {
-        setTimeout(() => {
-        dimButton();
-            }, 500);
+        if (!win) {
+            setTimeout(() => {
+            dimButton();
+            }, 300);
         }
     }
-})
+});
 
 box3.addEventListener('click', (event) => {
     if (on) {
-        // compare();
         box3.style.backgroundColor = "yellow";
         playerTable.push(3);
+        compare();
         console.log(playerTable);
     if (!win) {
         setTimeout(() => {
         dimButton();
-            }, 500);
+            }, 300);
         }
     }
 })
 
 box4.addEventListener('click', (event) => {
     if (on) {
-        // compare();
-        box4.style.backgroundColor = "blue";
+        box4.style.backgroundColor = 'blue';
         playerTable.push(4);
+        compare();
         console.log(playerTable);
-    // if (!win) {
-    //     setTimeout(() => {
-    //     dimButton();
-    //         }, 500);
-    //     }
+    if (!win) {
+        setTimeout(() => {
+            dimButton();
+        }, 300);
     }
-})
+    }
+});
+
 
 //add evt listener to start btn and run cb function to trigger beginning of game
 startBtn.addEventListener('click', startGame);
 
-//add evt listener to restart btn and clear all code out
-restartBtn.addEventListener('click', restartGame);
-
 //functions
-
 //create an array of 20 random numbers and store in game table; there are 20 levels
 function randomNumber(){ 
-    for(let i=0; i < 20; i++){    
+    for(let i = 0; i < 20; i++){    
     gameTable.push(Math.ceil(Math.random() * 4));
     }
 };
-
 //trigerred when start button is clicked
 function startGame(){
     //since player hasn't won game
@@ -113,42 +109,45 @@ function startGame(){
     //resetting all arrays to blank
     playerTable = [];
     gameTable = [];
-    levels.innerHTML = "Level 1";    
+    levels.innerHTML = "Level " + level;    
     compTurn = true;
     correct = true;
     randomNumber();
-    simonTurn(); 
-    //calls simonTurn over and over every second and turns on buttons 
-    // interval = 0;
-    interval = setInterval(simonTurn, 900);
-    console.log(gameTable);
-};
+    //calls simonTurn over and over every second and turns on buttons
+     interval = 0;
+     interval = setInterval(simonTurn, 800);
+     console.log(gameTable);
+ };
+
 
 //simon function
 function simonTurn(){  
     //while simon is running, the player cannot press buttons
     on = false;
+
     //if number of colors lit up equal the level number simon's turn is over
-    if (lit == level){
+    if (lit === level) {
         //clears the setInterval method
         clearInterval(interval);
         compTurn = false;
         dimButton();
         //player can now play
         on = true;
-    } if(compTurn){
+    } 
+    
+    if(compTurn){
         dimButton();
         setTimeout(() => {
-            if (gameTable[lit] == 1)    
+             if (gameTable[lit] === 1)    
                 box1.style.backgroundColor = "green";
-             if (gameTable[lit] == 2) 
+             if (gameTable[lit] === 2) 
                 box2.style.backgroundColor = "red";
-             if (gameTable[lit] == 3) 
+            if (gameTable[lit] === 3) 
                 box3.style.backgroundColor = "yellow";
-             if (gameTable[lit] == 4) 
+            if (gameTable[lit] === 4) 
                 box4.style.backgroundColor = "blue";
             lit++;
-        }, 100);
+        }, 200);
     }
 }
 
@@ -160,18 +159,30 @@ function dimButton(){
     box4.style.backgroundColor = "rgb(110, 110, 212)";
 }
 
-
-function restartGame(){
-    randomTable = [];
-    originalTable = [];
-};
- 
-
 function compare(){
-    if (playerTable(i) === gameTable(i)) {
-        alert("Great guess");
-        levels.innerHTML = "Level" + $(`level`);    
-    } else {
-        alert("Try again");
+    //if player wins a level, but has not completed all 20 levels
+    if (playerTable[playerTable.length - 1] == gameTable[playerTable.length - 1]) {
+        correct = true;
+        level++;
+        interval = setInterval(simonTurn, 800);
+        compTurn = true;
+        levels.innerHTML = "Level " + level;  
+        display.innerHTML ='Congrats, keep going!';
+    }
+
+    //player lost
+    if (playerTable[playerTable.length - 1] !== gameTable[playerTable.length - 1]){  
+        correct = false;
+    };
+
+    if (correct = false) {
+        display.innerHTML ='Oops, try again!';
+        levels.innerHTML = "Level " + level;
     }
 };
+
+function winGame(){
+
+}; 
+
+
