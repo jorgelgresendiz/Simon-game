@@ -41,7 +41,7 @@ if (on){
                 dimButton();
             }, 300);
         }
-        console.log(win);
+        // console.log(win);
     }
 });
 
@@ -163,26 +163,47 @@ function compare(){
     //if player wins a level, but has not completed all 20 levels
     if (playerTable[playerTable.length - 1] == gameTable[playerTable.length - 1]) {
         correct = true;
-        level++;
-        interval = setInterval(simonTurn, 800);
-        compTurn = true;
-        levels.innerHTML = "Level " + level;  
-        display.innerHTML ='Congrats, keep going!';
-    }
+        
+        if (correct === true){
+            level++;
+            console.log(level); 
+            if (level === 2){
+                interval = setInterval(simonTurn, 800);
+                compTurn = true;
+                levels.innerHTML = "Level " + level; 
+                display.innerHTML ='Congrats, keep going!';
+                startBtn.parentNode.removeChild(startBtn); 
+            }
+            else if (level === 21){
+                display.innerHTML = 'Game Over! You Win'
+            } else {
+                interval = setInterval(simonTurn, 800);
+                compTurn = true;
+                levels.innerHTML = "Level " + level; 
 
-    //player lost
+                display.innerHTML ='Congrats, keep going!';
+            }
+        }
+    }
     if (playerTable[playerTable.length - 1] !== gameTable[playerTable.length - 1]){  
-        correct = false;
-    };
+            correct = false;
+            for (let i = 0; i < playerTable.length; i++){
+                if (playerTable[i] !== gameTable[i]){
+                    correct = false;  
+                    display.innerHTML ='Oops, try again!';
+                    levels.innerHTML = "Level " + level;
+                    playerTable.splice(level-1, playerTable.length);
+                    break;
+                } else {
+                    correct = true;
+                }
+                console.log(correct); 
+            }
+        };
 
-    if (correct = false) {
-        display.innerHTML ='Oops, try again!';
-        levels.innerHTML = "Level " + level;
-    }
+    
+
+    
 };
-
-function winGame(){
-
-}; 
 
 
