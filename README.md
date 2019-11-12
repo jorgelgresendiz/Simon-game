@@ -64,7 +64,7 @@ ___________________________________________________
 
 ___________________________________________________
 
-[Play this game!]()
+[Play this game!](https://jorgelgresendiz.github.io/Simon-game/)
 
 ## Author:
 Jorge Galvan
