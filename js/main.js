@@ -123,18 +123,20 @@ function startGame(){
     compTurn = true;
     correct = true;
     randomNumber();
-    //calls simonTurn over and over every second and turns on buttons
-     interval = 0;
-     interval = setInterval(simonTurn, 800);
-     console.log(gameTable);
+    //calls simonTurn over and over every second and turns on buttons 
+     
+    interval = 0;
+    interval = setInterval(simonTurn, 800);
+    console.log(gameTable);
  };
 
 
 //simon function
 function simonTurn(){  
+    //lit = 0; 
     //while simon is running, the player cannot press buttons
     on = false;
-
+    //lit = 0; 
     //if number of colors lit up equal the level number simon's turn is over
     if (lit === level) {
         //clears the setInterval method
@@ -171,11 +173,16 @@ function dimButton(){
 
 function compare(){
     //if player wins a level, but has not completed all 20 levels
-    if (playerTable[playerTable.length - 1] == gameTable[playerTable.length - 1]) {
+    if (level == playerTable.length && correct && !win) {
+    // if (playerTable[playerTable.length - 1] == gameTable[playerTable.length - 1]) {
         correct = true;
         
         if (correct === true){
             level++;
+            playerTable = [];
+            compTurn = true;
+            lit = 0;
+
             console.log(level); 
             if (level === 2){
                 interval = setInterval(simonTurn, 800);
