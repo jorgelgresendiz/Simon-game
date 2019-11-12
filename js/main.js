@@ -19,6 +19,7 @@ var playerTable = [];
 //cached elements
 const levels = document.getElementById("levels");
 const startBtn = document.getElementById("start");
+const restartBtn = document.getElementById("restart");
 
 const box1  = document.getElementById("box1");
 const box2  = document.getElementById("box2");
@@ -91,7 +92,16 @@ box4.addEventListener('click', (event) => {
 //add evt listener to start btn and run cb function to trigger beginning of game
 startBtn.addEventListener('click', startGame);
 
+restartBtn.addEventListener('click', restartGame);
+
+
 //functions
+
+function restartGame(){
+    display.innerHTML = "Let's Play!"
+    startGame();
+};
+
 //create an array of 20 random numbers and store in game table; there are 20 levels
 function randomNumber(){ 
     for(let i = 0; i < 20; i++){    
@@ -199,11 +209,5 @@ function compare(){
                 }
                 console.log(correct); 
             }
-        };
-
-    
-
-    
+        }; 
 };
-
-
