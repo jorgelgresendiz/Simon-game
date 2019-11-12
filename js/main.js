@@ -133,10 +133,8 @@ function startGame(){
 
 //simon function
 function simonTurn(){  
-    //lit = 0; 
     //while simon is running, the player cannot press buttons
     on = false;
-    //lit = 0; 
     //if number of colors lit up equal the level number simon's turn is over
     if (lit === level) {
         //clears the setInterval method
@@ -174,7 +172,6 @@ function dimButton(){
 function compare(){
     //if player wins a level, but has not completed all 20 levels
     if (level == playerTable.length && correct && !win) {
-    // if (playerTable[playerTable.length - 1] == gameTable[playerTable.length - 1]) {
         correct = true;
         
         if (correct === true){
